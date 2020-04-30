@@ -1,0 +1,33 @@
+<!-- Placeholder for edit profile -->
+<div mat-dialog-content>   
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput/>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Location</mat-label>
+            <input matInput/>
+        </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Website</mat-label>
+        <input matInput/>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Occupation</mat-label>
+        <input matInput/>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Education</mat-label>
+        <input matInput/>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Skills</mat-label>
+        <input matInput/>
+      </mat-form-field>
+  </div>
+  <!--Profile picture switcher-->
+  <mat-card>
+        <button (click) = "savePicture('https://images.pexels.com/photos/1132047/pexels-photo-1132047.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')"  mat-raised-button color="primary">Picture 1</button>
+        <button (click) = "savePicture('https://i.redd.it/kazq6jv71tp01.jpg')"  mat-raised-button color="primary">Picture 2</button>
+        <button (click) = "savePicture('https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fdam%2Fimageserve%2F1072753294%2F960x0.jpg%3Ffit%3Dscale')"  mat-raised-button color="primary">Picture 3</button>
+</mat-card>

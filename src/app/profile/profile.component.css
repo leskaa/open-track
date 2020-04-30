@@ -1,0 +1,16 @@
+.skillsList{
+    align-self: center;
+    text-align: center;
+    border-style: solid;
+    border-inline-style: dotted;
+    width: 125px;
+}
+.UserInfo{
+    width: 300px;
+}
+.button{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+}
