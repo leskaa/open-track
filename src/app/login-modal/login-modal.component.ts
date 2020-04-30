@@ -12,6 +12,8 @@ export interface User {
   styleUrls: ['./login-modal.component.css'],
 })
 export class LoginModalComponent {
+  hide: boolean = true;
+
   constructor(
     public dialogRef: MatDialogRef<LoginModalComponent>,
     @Inject(MAT_DIALOG_DATA) public user: User

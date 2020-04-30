@@ -1,0 +1,70 @@
+<h1 mat-dialog-title>Registration</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" />
+      <mat-error *ngIf="form.controls['username'].invalid"
+        >Username is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        formControlName="password"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error *ngIf="form.controls['password'].invalid"
+        >Password is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Confirm Password</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        formControlName="confirmPassword"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error
+        *ngIf="
+          form.controls['confirmPassword'].pristine ||
+          form.controls['confirmPassword'].errors?.MatchPassword
+        "
+        >Password does not match</mat-error
+      >
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClose()">Cancel</button>
+  <button
+    mat-button
+    [disabled]="form.invalid"
+    [mat-dialog-close]="{
+      username: form.controls['username'].value,
+      password: form.controls['password'].value
+    }"
+    cdkFocusInitial
+  >
+    Register
+  </button>
+</div>
