@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LoginModalComponent } from '../login-modal/login-modal.component';
+import { RegisterModalComponent } from '../register-modal/register-modal.component';
 
 import { UserService } from '../user.service'
 
@@ -10,11 +10,11 @@ export interface User {
 }
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'app-register-button',
+  templateUrl: './register-button.component.html',
+  styleUrls: ['./register-button.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegisterButtonComponent implements OnInit {
 
   username: string;
   password: string;
@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
     this.password = '';
   }
 
-  openLogin(): void {
-    const dialogRef = this.dialog.open(LoginModalComponent, {
+  openRegister(): void {
+    const dialogRef = this.dialog.open(RegisterModalComponent, {
       width: '250px',
       data: {
         username: this.username,
@@ -38,14 +38,14 @@ export class LoginComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       this.username = result.username;
       this.password = result.password;
-      this.onLogin();
+      this.onRegister();
     });
   }
 
-  onLogin(): void {
-    this.userService.loginUser(this.username, this.password).subscribe(
+  onRegister(): void {
+    this.userService.registerUser(this.username, this.password).subscribe(
       response => {
-        alert('User '  + this.username + ' logged in.');
+        alert('User '  + this.username + ' registered.');
       },
       error => {
         console.log('error', error);
