@@ -1,0 +1,13 @@
+<button
+  *ngIf="loggedIn; else notLoggedIn"
+  (click)="logout()"
+  mat-raised-button
+  color="primary"
+>
+  Logout ({{ username }})
+</button>
+<ng-template #notLoggedIn>
+  <button (click)="openLogin()" mat-raised-button color="primary">
+    Log In
+  </button>
+</ng-template>

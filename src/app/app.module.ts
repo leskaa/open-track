@@ -11,19 +11,20 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 
-import { LoginComponent } from './login/login.component';
+import { LoginButtonComponent } from './login-button/login-button.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { RegisterModalComponent } from './register-modal/register-modal.component';
 import { RegisterButtonComponent } from './register-button/register-button.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginModalComponent, LoginComponent, RegisterModalComponent, RegisterButtonComponent, ProfileComponent, EditProfileComponent],
+  declarations: [AppComponent, LoginModalComponent, LoginButtonComponent, RegisterModalComponent, RegisterButtonComponent, ProfileComponent, EditProfileComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -37,7 +38,8 @@ import { RegisterButtonComponent } from './register-button/register-button.compo
     MatInputModule,
     MatCardModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

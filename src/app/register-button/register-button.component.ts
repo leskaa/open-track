@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RegisterModalComponent } from '../register-modal/register-modal.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { UserService } from '../user.service'
 
@@ -19,7 +20,7 @@ export class RegisterButtonComponent implements OnInit {
   username: string;
   password: string;
 
-  constructor(public dialog: MatDialog, private userService: UserService) {}
+  constructor(public dialog: MatDialog, private snackBar: MatSnackBar, private userService: UserService) {}
 
   ngOnInit() {
     this.username = '';
@@ -36,19 +37,25 @@ export class RegisterButtonComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.username = result.username;
-      this.password = result.password;
-      this.onRegister();
+      if (result !== undefined) {
+        this.username = result.username;
+        this.password = result.password;
+        this.onRegister();
+      }
     });
   }
 
   onRegister(): void {
     this.userService.registerUser(this.username, this.password).subscribe(
       response => {
-        alert('User '  + this.username + ' registered.');
+        this.snackBar.open(`User, ${this.username}, registered`, 'Dismiss', {
+          duration: 2000
+        });
       },
       error => {
-        console.log('error', error);
+        this.snackBar.open(`Registration Failed`, 'Dismiss', {
+          duration: 2000
+        });
       }
     )
   }
