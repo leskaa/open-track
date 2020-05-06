@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,9 +22,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { RegisterModalComponent } from './register-modal/register-modal.component';
 import { RegisterButtonComponent } from './register-button/register-button.component';
+import { MaterialListComponent } from './material-list/material-list.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginModalComponent, LoginButtonComponent, RegisterModalComponent, RegisterButtonComponent, ProfileComponent, EditProfileComponent],
+  declarations: [AppComponent, LoginModalComponent, LoginButtonComponent, RegisterModalComponent, RegisterButtonComponent, ProfileComponent, EditProfileComponent, MaterialListComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
