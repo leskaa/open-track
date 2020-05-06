@@ -1,0 +1,48 @@
+<!-- Display Profile to the user -->
+<mat-card *ngIf="showProfile">
+  <mat-card-title-group>
+    <mat-card-title>
+      {{ name }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ location }}
+    </mat-card-subtitle>
+    <img mat-card-md-image src="{{ profilePic }}" />
+  </mat-card-title-group>
+  <div class="UserInfo">
+    <mat-card-content>
+      <mat-label> Website: {{ website }}</mat-label>
+    </mat-card-content>
+    <mat-card-content>
+      <mat-label>Occupation: {{ work }}</mat-label>
+    </mat-card-content>
+    <mat-card-content>
+      <mat-label>Education: {{ education }}</mat-label>
+    </mat-card-content>
+  </div>
+  <div class="skillsList">
+    <mat-label>List of Skills</mat-label>
+    <mat-nav-list *ngFor="let skill of skills">
+      <mat-label>{{ skill }}</mat-label>
+    </mat-nav-list>
+  </div>
+  <mat-card-actions>
+    <button (click)="toggleView('Edit')" mat-raised-button color="primary">
+      Edit your profile
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<!-- Toggle editor view -->
+<div *ngIf="showEdit">
+  <app-edit-profile (picSwitcher)="profilePic = $event"></app-edit-profile>
+</div>
+
+<button
+  (click)="toggleView('Profile')"
+  mat-raised-button
+  color="primary"
+  *ngIf="showEdit"
+>
+  Back
+</button>
