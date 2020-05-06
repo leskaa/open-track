@@ -1,0 +1,21 @@
+
+<h2>List of materials</h2>
+<ul>
+    <li *ngFor="let material of materials">
+        <p>{{material.title}}</p>
+        <button (click) = "selectMaterial(material)">Select Material</button>
+        <p>-------------------------------------------------</p>
+    </li>
+</ul>
+<hr>
+<h2>Modify Material</h2>
+ID: {{selectedMaterial.material_id}} (Only relevant when deleting / updating, not relevant when adding)<br>
+Title: <input type="text" [(ngModel)]="selectedMaterial.title"/><br>
+Description: <input type="text" [(ngModel)]="selectedMaterial.description"/><br>
+Views: <input type="text" [(ngModel)]="selectedMaterial.views"/><br>
+Website: <input type="text" [(ngModel)]="selectedMaterial.website"/><br>
+Track Foreign Key: <input type="text" [(ngModel)]="selectedMaterial.track"/><br>
+Display Order: <input type="text" [(ngModel)]="selectedMaterial.display_order"/><br>
+<button (click) = "createMaterial()">Create</button>
+<button *ngIf="selectedMaterial.id != -1" (click) = "updateMaterial()">Update</button>
+<button *ngIf="selectedMaterial.id != -1" (click) = "deleteMaterial()">Delete</button>
