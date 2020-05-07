@@ -22,31 +22,30 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { RegisterModalComponent } from './register-modal/register-modal.component';
 import { RegisterButtonComponent } from './register-button/register-button.component';
 import { MaterialListComponent } from './material-list/material-list.component';
-import { MaterialComponent } from './material/material.component';
+import { CardComponent } from './card/card.component';
 import { RatingComponent } from './rating/rating.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { DiscoverPageComponent } from './discover-page/discover-page.component';
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { NavbarComponent } from './navigation/navbar/navbar.component';
-import { MenuComponent } from './navigation/menu/menu.component';
 import { SearchbarComponent } from './navigation/searchbar/searchbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginModalComponent,
     LoginButtonComponent,
-    MaterialComponent,
+    CardComponent,
     RatingComponent,
     AboutPageComponent,
     DiscoverPageComponent,
     FavoritesPageComponent,
     ProfilePageComponent,
     NavbarComponent,
-    MenuComponent,
     SearchbarComponent,
     MaterialListComponent,
     EditProfileComponent,
@@ -71,7 +70,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FontAwesomeModule,
     MatTooltipModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

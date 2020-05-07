@@ -1,6 +1,73 @@
+<input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" /><label
+  for="openSidebarMenu"
+  class="sidebarIconToggle"
+  ><div class="spinner diagonal part-1"></div>
+  <div class="spinner horizontal"></div>
+  <div class="spinner diagonal part-2"></div
+></label>
 <div class="header">
-  <span><fa-icon [icon]="faBars"></fa-icon></span>
-  Current Page
-  <app-login-button></app-login-button>
-  <app-register-button></app-register-button>
+  <div class="menuTitle">
+    <div class="hamburger"></div>
+    <H2>{{ title }}</H2>
+  </div>
+  <app-searchbar></app-searchbar>
 </div>
+<div class="sidebar">
+  <div *ngIf="loggedIn" class="userContainer">
+    <img [src]="profile.image_relative_path" alt="Profile" border="0" />
+    <div style="display: inline-block; vertical-align: middle;">
+      <h2 style="margin: 0; font-size: 30px;">
+        {{ profile.first_name }} {{ profile.last_name }}
+      </h2>
+      <h4 style="color: gray; margin: 5px 0;">{{ user.email }}</h4>
+    </div>
+    <hr style="width: 350px; margin-left: -22px; color: gray;" />
+  </div>
+  <div *ngIf="!loggedIn" clas="userContainer">
+    <div style="display: inline-block; vertical-align: middle;">
+      <h2 style="margin: 0; font-size: 30px;">
+        Guest User
+      </h2>
+    </div>
+    <hr style="width: 350px; margin-left: -22px; color: gray;" />
+  </div>
+  <div class="pages">
+    <li (click)="changeBox()">
+      <a routerLink="/discover" routerLinkActive="active">
+        <div class="" id="discover">
+          <span><fa-icon [icon]="faTh"></fa-icon></span>
+          <h3>Discover</h3>
+        </div>
+      </a>
+    </li>
+    <li (click)="changeBox()">
+      <a routerLink="/profile" routerLinkActive="active"
+        ><div class="" id="profile">
+          <span><fa-icon [icon]="faUser"></fa-icon></span>
+          <h3>Profile</h3>
+        </div>
+      </a>
+    </li>
+    <li (click)="changeBox()">
+      <a routerLink="/favorites" routerLinkActive="active">
+        <div class="" id="favorites">
+          <span><fa-icon [icon]="faHeart"></fa-icon></span>
+          <h3>Favorites</h3>
+        </div>
+      </a>
+    </li>
+    <li (click)="changeBox()">
+      <a routerLink="/about" routerLinkActive="active">
+        <div class="" id="about">
+          <span><fa-icon [icon]="faEye"></fa-icon></span>
+          <h3>About</h3>
+        </div>
+      </a>
+    </li>
+  </div>
+  <div class="button-container">
+    <app-login-button (userLoggedIn)="checkLogin($event)"></app-login-button>
+    <app-register-button></app-register-button>
+  </div>
+</div>
+<div class="pageContainer"></div>
