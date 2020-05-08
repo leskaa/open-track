@@ -4,6 +4,7 @@ import { AboutPageComponent } from './about-page/about-page.component';
 import { DiscoverPageComponent } from './discover-page/discover-page.component';
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { TrackPageComponent } from './track-page/track-page.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfilePageComponent,
+  },
+  {
+    path: 'track/:id',
+    component: TrackPageComponent,
   },
 ];
 

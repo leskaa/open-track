@@ -1,48 +1,119 @@
-<!-- Display Profile to the user -->
-<mat-card *ngIf="showProfile">
-  <mat-card-title-group>
-    <mat-card-title>
-      {{ name }}
-    </mat-card-title>
-    <mat-card-subtitle>
-      {{ location }}
-    </mat-card-subtitle>
-    <img mat-card-md-image src="{{ profilePic }}" />
-  </mat-card-title-group>
-  <div class="UserInfo">
-    <mat-card-content>
-      <mat-label> Website: {{ website }}</mat-label>
-    </mat-card-content>
-    <mat-card-content>
-      <mat-label>Occupation: {{ work }}</mat-label>
-    </mat-card-content>
-    <mat-card-content>
-      <mat-label>Education: {{ education }}</mat-label>
-    </mat-card-content>
+<div *ngIf="showProfile">
+  <div class="profileHead">
+    <img [src]="profile.image_relative_path" />
+    <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+    <span style="display: inline-block;"
+      ><fa-icon [icon]="faMapMarkerAlt"></fa-icon>
+    </span>
+    <h3 style="display: inline-block;">{{ profile.location }}</h3>
+    <a [href]="profile.website" target="_blank">
+      <h3>{{ profile.website }}</h3>
+    </a>
   </div>
-  <div class="skillsList">
-    <mat-label>List of Skills</mat-label>
-    <mat-nav-list *ngFor="let skill of skills">
-      <mat-label>{{ skill }}</mat-label>
-    </mat-nav-list>
+  <div class="profileContent">
+    <div>
+      <h3>Work</h3>
+      <p>{{ profile.work }}</p>
+    </div>
+    <div>
+      <h3>Education</h3>
+      <p>{{ profile.education }}</p>
+    </div>
+    <div>
+      <h3>Skills</h3>
+      <p>{{ profile.skills }}</p>
+    </div>
+    <div class="editButton">
+      <button mat-raised-button color="primary" (click)="toggleView('Edit')">
+        Edit Profile
+      </button>
+    </div>
+    <hr
+      style="
+        position: relative;
+        margin: 20px 0 0 0;
+        width: 120%;
+        left: -40px;
+        color: #505050;
+      "
+    />
   </div>
-  <mat-card-actions>
-    <button (click)="toggleView('Edit')" mat-raised-button color="primary">
-      Edit your profile
-    </button>
-  </mat-card-actions>
-</mat-card>
-
-<!-- Toggle editor view -->
-<div *ngIf="showEdit">
-  <app-edit-profile (picSwitcher)="profilePic = $event"></app-edit-profile>
+  <div class="tracks">
+    <h2>User's Tracks</h2>
+  </div>
 </div>
-
-<button
-  (click)="toggleView('Profile')"
-  mat-raised-button
-  color="primary"
-  *ngIf="showEdit"
->
-  Back
-</button>
+<div *ngIf="showEdit" class="editProfile">
+  <h2>Edit {{ user.first_name }} {{ user.last_name }}'s Profile</h2>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <li>
+      <mat-form-field>
+        <mat-label for="gravatarLink">Gravatar Link</mat-label>
+        <input
+          matInput
+          formControlName="gravatarLink"
+          id="gravatarLink"
+          [(ngModel)]="gravatarLink"
+        />
+      </mat-form-field>
+    </li>
+    <li>
+      <mat-form-field>
+        <mat-label for="website">Website</mat-label>
+        <input
+          matInput
+          formControlName="website"
+          id="website"
+          [(ngModel)]="website"
+        />
+      </mat-form-field>
+    </li>
+    <li>
+      <mat-form-field>
+        <mat-label for="location">Location</mat-label>
+        <input
+          matInput
+          formControlName="location"
+          id="location"
+          [(ngModel)]="location"
+        />
+      </mat-form-field>
+    </li>
+    <li>
+      <mat-form-field>
+        <mat-label for="work">Work</mat-label>
+        <input matInput formControlName="work" id="work" [(ngModel)]="work" />
+      </mat-form-field>
+    </li>
+    <li>
+      <mat-form-field>
+        <mat-label for="education">Education</mat-label>
+        <input
+          matInput
+          formControlName="education"
+          id="education"
+          [(ngModel)]="education"
+        />
+      </mat-form-field>
+    </li>
+    <li>
+      <mat-form-field>
+        <mat-label for="skills">Skills</mat-label>
+        <input
+          matInput
+          formControlName="skills"
+          id="skills"
+          [(ngModel)]="skills"
+        />
+      </mat-form-field>
+    </li>
+    <button
+      mat-raised-button
+      (click)="toggleView('Profile')"
+      type="button"
+      color="primary"
+    >
+      Back
+    </button>
+    <button mat-raised-button type="submit" color="primary">Submit</button>
+  </form>
+</div>
