@@ -21,18 +21,50 @@ export class ProfileService {
       headers: new HttpHeaders({
         'X-CSRFToken': this.cookieService.get('csrftoken'),
       }),
-      withCredentials: true
+      withCredentials: true,
     });
   }
 
   updateProfile(profile: Profile): Observable<Profile> {
-    const { user_id, ...body } = profile;
-    return this.http.put<Profile>(this._url + user_id + '/', body);
+    if (
+      !(
+        profile.image_relative_path.includes(
+          'https://www.gravatar.com/avatar/'
+        ) ||
+        profile.image_relative_path.includes('https://s.gravatar.com/avatar/')
+      )
+    ) {
+      profile.image_relative_path =
+        'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y&s=200';
+    }
+    const body = profile;
+    return this.http.put<Profile>(this._url + body.user_id + '/', body, {
+      headers: new HttpHeaders({
+        'X-CSRFToken': this.cookieService.get('csrftoken'),
+      }),
+      withCredentials: true,
+    });
   }
 
   createProfile(profile: Profile): Observable<Profile> {
     const { user_id, ...body } = profile;
-    return this.http.post<Profile>(this._url, body);
+    if (
+      !(
+        profile.image_relative_path.includes(
+          'https://www.gravatar.com/avatar/'
+        ) ||
+        profile.image_relative_path.includes('https://s.gravatar.com/avatar/')
+      )
+    ) {
+      body.image_relative_path =
+        'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y&s=200';
+    }
+    return this.http.post<Profile>(this._url, body, {
+      headers: new HttpHeaders({
+        'X-CSRFToken': this.cookieService.get('csrftoken'),
+      }),
+      withCredentials: true,
+    });
   }
 
   deleteProfile(id: number): Observable<Profile> {

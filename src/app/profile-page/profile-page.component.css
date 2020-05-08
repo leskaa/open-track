@@ -1,16 +1,73 @@
-.skillsList{
-    align-self: center;
-    text-align: center;
-    border-style: solid;
-    border-inline-style: dotted;
-    width: 125px;
+.profileHead {
+  z-index: 0;
+  position: relative;
+  text-align: center;
+  margin: 100px auto 50px auto;
+  color: #303030;
 }
-.UserInfo{
-    width: 300px;
+
+.profileHead img {
+  height: 200px;
+  width: 200px;
+  border-radius: 100%;
 }
-.button{
-    display:block;
-    margin-left: auto;
-    margin-right: auto;
-    align-content: center;
+
+.profileHead h2 {
+  font-size: 35px;
+  margin: 5px 0 5px 0;
+}
+
+.profileHead h3 {
+  margin: 0 0 3px 0;
+  font-size: 18px;
+}
+
+.profileHead span {
+  font-size: 22px;
+  margin: 8px 10px 0 0;
+}
+
+.profileContent h3 {
+  position: relative;
+  font-weight: 500;
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: #303030;
+}
+
+.profileContent p {
+  color: #505050;
+  font-size: 15px;
+  margin: 0 0 20px 0;
+}
+
+.tracks {
+  position: relative;
+  margin: 20px 0 0 0;
+}
+
+.tracks h2 {
+  font-size: 35px;
+  color: #303030;
+}
+
+.editProfile {
+  list-style: none;
+}
+
+.editProfile h2 {
+  font-size: 30px;
+}
+
+.editProfile li {
+  font-size: 15px;
+}
+
+.editProfile mat-form-field {
+  width: 400px !important;
+}
+
+.editProfile button {
+  font-size: 20px;
+  margin: 0 20px 0 0;
 }

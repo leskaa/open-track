@@ -1,5 +1,6 @@
 .header {
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
@@ -43,6 +44,7 @@
   font-size: larger;
   text-align: left;
   margin-left: 20px;
+  color: #303030;
 }
 
 .userContainer img {
@@ -51,6 +53,10 @@
   height: 100px;
   width: 100px;
   border-radius: 100%;
+}
+
+.pageContainer {
+  transition: all 1s;
 }
 
 input[type="checkbox"]:checked ~ .sidebar {
@@ -85,6 +91,7 @@ input[type="checkbox"] {
   width: 22px;
   top: 22px;
   left: 25px;
+  transition: all 1s;
 }
 .spinner {
   transition: all 0.3s;
@@ -95,7 +102,7 @@ input[type="checkbox"] {
   background-color: #fff;
 }
 .horizontal {
-  transition: all 0.3s;
+  transition: all 0.6s;
   box-sizing: border-box;
   position: relative;
   float: left;
@@ -103,36 +110,36 @@ input[type="checkbox"] {
 }
 .diagonal.part-1 {
   position: relative;
-  transition: all 0.3s;
+  transition: all 0.6s;
   box-sizing: border-box;
   float: left;
 }
 .diagonal.part-2 {
-  transition: all 0.3s;
+  transition: all 0.6s;
   box-sizing: border-box;
   position: relative;
   float: left;
   margin-top: 4px;
 }
 input[type="checkbox"]:checked ~ .sidebarIconToggle > .horizontal {
-  transition: all 0.3s;
+  transition: all 0.6s;
   box-sizing: border-box;
   opacity: 0;
-  background-color: black;
+  background-color: #303030;
 }
 input[type="checkbox"]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
-  transition: all 0.3s;
+  transition: all 0.6s;
   box-sizing: border-box;
   transform: rotate(135deg);
   margin-top: 7px;
-  background-color: black;
+  background-color: #303030;
 }
 input[type="checkbox"]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
-  transition: all 0.3s;
+  transition: all 0.6s;
   box-sizing: border-box;
   transform: rotate(-135deg);
   margin-top: -10px;
-  background-color: black;
+  background-color: #303030;
 }
 
 .pages {
@@ -144,7 +151,7 @@ input[type="checkbox"]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 
 .pages li {
   margin: 0 0 20px 0;
-  color: #666666;
+  color: #303030;
 }
 
 .pages li span {
@@ -191,7 +198,7 @@ input[type="checkbox"]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 a,
 a:visited {
   text-decoration: none;
-  color: #666666;
+  color: #303030;
 }
 
 .button-container {

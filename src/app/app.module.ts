@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule, MatCard } from '@angular/material/card';
@@ -12,7 +11,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
@@ -33,6 +31,7 @@ import { SearchbarComponent } from './navigation/searchbar/searchbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CookieService } from 'ngx-cookie-service';
+import { TrackPageComponent } from './track-page/track-page.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +50,7 @@ import { CookieService } from 'ngx-cookie-service';
     EditProfileComponent,
     RegisterButtonComponent,
     RegisterModalComponent,
+    TrackPageComponent,
   ],
   imports: [
     BrowserModule,
