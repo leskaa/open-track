@@ -3,7 +3,7 @@ export interface CardInfo {
   isTrack: boolean;
   author: string;
   description: string;
-  starts: number;
+  stars: number;
   viewCount: number;
   favorite: boolean;
   link: string;

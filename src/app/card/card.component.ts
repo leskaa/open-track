@@ -2,6 +2,16 @@ import { Component, OnInit, Input } from '@angular/core';
 import { faHeart, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { CardInfo } from './../CardInfo';
 
+const defaultCardInfo: CardInfo = {
+  title: 'default',
+  isTrack: true,
+  author: 'unknown',
+  description: 'lorem impsum',
+  stars: 1,
+  viewCount: 0,
+  favorite: false,
+  link: 'unknown'
+};
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -15,5 +25,7 @@ export class CardComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cardInfo = { ...defaultCardInfo, ...this.cardInfo };
+  }
 }

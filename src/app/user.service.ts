@@ -76,6 +76,10 @@ export class UserService {
     });
   }
 
+  getUserById(): Observable<any> {
+    return this.http.get<User>(`${environment.apiUrl}/users/`, {})
+  }
+
   getToken(): string {
     return this.token;
   }

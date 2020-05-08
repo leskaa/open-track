@@ -1,7 +1,8 @@
 <div class="stars">
-  <span><fa-icon [icon]="faStar"></fa-icon></span>
-  <span><fa-icon [icon]="faStar"></fa-icon></span>
-  <span><fa-icon [icon]="faStar"></fa-icon></span>
-  <span><fa-icon [icon]="faStar"></fa-icon></span>
-  <span><fa-icon [icon]="faStarHalf"></fa-icon></span>
+  <span *ngFor="let star of stars">
+    <fa-icon [icon]="faStar"></fa-icon>
+  </span>
+  <span *ngIf="hasHalfStar">
+    <fa-icon [icon]="faStarHalf"></fa-icon>
+  </span>
 </div>
