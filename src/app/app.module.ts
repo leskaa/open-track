@@ -14,6 +14,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
+import { TrackPageComponent } from './track-page/track-page.component';
 
 import { LoginButtonComponent } from './login-button/login-button.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
@@ -31,7 +32,6 @@ import { SearchbarComponent } from './navigation/searchbar/searchbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CookieService } from 'ngx-cookie-service';
-import { TrackPageComponent } from './track-page/track-page.component';
 
 @NgModule({
   declarations: [
