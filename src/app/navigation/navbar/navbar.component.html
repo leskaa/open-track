@@ -17,13 +17,13 @@
     <img [src]="profile.image_relative_path" alt="Profile" border="0" />
     <div style="display: inline-block; vertical-align: middle;">
       <h2 style="margin: 0; font-size: 30px;">
-        {{ profile.first_name }} {{ profile.last_name }}
+        {{ user.first_name }} {{ user.last_name }}
       </h2>
       <h4 style="color: gray; margin: 5px 0;">{{ user.email }}</h4>
     </div>
     <hr style="width: 350px; margin-left: -22px; color: gray;" />
   </div>
-  <div *ngIf="!loggedIn" clas="userContainer">
+  <div *ngIf="!loggedIn" class="userContainer">
     <div style="display: inline-block; vertical-align: middle;">
       <h2 style="margin: 0; font-size: 30px;">
         Guest User

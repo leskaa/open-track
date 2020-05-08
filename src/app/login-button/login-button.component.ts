@@ -32,6 +32,7 @@ export class LoginButtonComponent implements OnInit {
   ngOnInit() {
     this.username = '';
     this.password = '';
+    this.loggedIn = this.userService.isLoggedIn()
   }
 
   openLogin(): void {

@@ -21,6 +21,7 @@ export class ProfileService {
       headers: new HttpHeaders({
         'X-CSRFToken': this.cookieService.get('csrftoken'),
       }),
+      withCredentials: true
     });
   }
 

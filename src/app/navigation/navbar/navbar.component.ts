@@ -8,9 +8,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { element } from 'protractor';
 import { Profile } from './../../models/Profile';
+import { User } from './../../models/User';
 import { ProfileService } from './../../profile.service';
 import { UserService } from './../../user.service';
-import { User } from 'src/app/login-modal/login-modal.component';
 
 @Component({
   selector: 'app-navbar',
@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
   faHeart = faHeart;
   faEye = faEye;
 
-  loggedIn: boolean;
+  loggedIn: boolean = false;
   title: string = '';
   url: string = '';
   profile: Profile;
@@ -39,15 +39,15 @@ export class NavbarComponent implements OnInit {
     this.url = this.document.location.href;
     this.getTitle();
     this.changeBox();
-    this.loggedIn = this.userService.isLoggedIn();
-    if (this.loggedIn) {
-      this.getProfile();
-    }
+    this.checkLogin(this.userService.isLoggedIn());
   }
 
   checkLogin(userLoggedIn: boolean): void {
     if (userLoggedIn) {
+      this.loggedIn = true;
       this.getProfile();
+    } else {
+      this.loggedIn = false;
     }
   }
 
@@ -80,13 +80,12 @@ export class NavbarComponent implements OnInit {
     try {
       const user = await this.userService.getUser().toPromise();
       const profile = await this.profileService
-        .getProfileById(user.user_id)
+        .getProfileById(user.pk)
         .toPromise();
-      console.log(profile);
       this.profile = profile;
       this.user = user;
-    } catch {
-      console.log('User and Profile api call failed');
+    } catch(err) {
+      console.log(err);
     }
   }
 }

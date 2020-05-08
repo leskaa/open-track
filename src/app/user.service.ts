@@ -12,7 +12,10 @@ export class UserService {
   username: string = '';
   token: string = '';
 
-  constructor(private http: HttpClient, private cookieService: CookieService) {}
+  constructor(private http: HttpClient, private cookieService: CookieService) {
+    this.username = this.cookieService.get('username');
+    this.token = this.cookieService.get('csrftoken');
+  }
 
   registerUser(username: string, password: string): Observable<any> {
     return this.http.post(`${environment.apiUrl}/rest-auth/registration/`, {
@@ -23,28 +26,45 @@ export class UserService {
   }
 
   loginUser(username: string, password: string): Observable<any> {
-    const response = this.http.post(`${environment.apiUrl}/rest-auth/login/`, {
-      username: username,
-      password: password,
-    });
-    console.log(
-      response.subscribe(
-        (response) => {
-          this.token = response['key'];
-          this.username = username;
-        },
-        (error) => {
-          console.log('error', error);
-        }
-      )
+    const response = this.http.post(
+      `${environment.apiUrl}/rest-auth/login/`,
+      {
+        username: username,
+        password: password,
+      },
+      { withCredentials: true }
+    );
+    response.subscribe(
+      (response) => {
+        this.token = response['key'];
+        this.username = username;
+        this.cookieService.set('username', username);
+      },
+      (error) => {
+        console.log('error', error);
+      }
     );
     return response;
   }
 
-  logoutUser(): Observable<any> {
+  logoutUser(): void {
     this.username = '';
     this.token = '';
-    return this.http.post(`${environment.apiUrl}/rest-auth/logout/`, {});
+    this.http.post(`${environment.apiUrl}/rest-auth/logout/`, {}, {
+      headers: new HttpHeaders({
+        'X-CSRFToken': this.cookieService.get('csrftoken'),
+        'Authorization': `Token ${this.cookieService.get('sessionid')}`
+      }),
+      withCredentials: true,
+    }).subscribe(
+      (response) => {
+        this.cookieService.delete('username');
+        this.cookieService.delete('csrftoken');
+      },
+      (error) => {
+        console.log('error', error);
+      }
+    );
   }
 
   getUser(): Observable<User> {
@@ -52,6 +72,7 @@ export class UserService {
       headers: new HttpHeaders({
         'X-CSRFToken': this.cookieService.get('csrftoken'),
       }),
+      withCredentials: true,
     });
   }
 
