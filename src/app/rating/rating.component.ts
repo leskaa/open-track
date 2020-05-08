@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -9,8 +9,18 @@ import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons';
 export class RatingComponent implements OnInit {
   faStar = faStar;
   faStarHalf = faStarHalf;
+  hasHalfStar: boolean = false;
+  stars: number[] = [];
+
+  @Input() rating: number;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.rating = Math.round(this.rating * 2) / 2;
+    if (!Number.isInteger(this.rating)) {
+      this.hasHalfStar = true;
+    }
+    this.stars = Array(Math.floor(this.rating)).fill(0);
+  }
 }

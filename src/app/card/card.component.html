@@ -1,28 +1,30 @@
-<mat-card class="card" matTooltip="Info about the action">
+<mat-card class="card" matTooltip="{{ cardInfo.link }}">
   <div class="container">
     <mat-card-header class="header">
       <mat-card-title style="font-size: 30px; color: white; line-height: 30px;">
-        Matieral Title With Some Extra Text
+        {{ cardInfo.title }}
       </mat-card-title>
       <mat-card-subtitle style="color: white;">
-        Author User
+        {{ cardInfo.author }}
       </mat-card-subtitle>
     </mat-card-header>
   </div>
   <mat-card-content class="content">
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, eligendi.
-      Culpa nostrum neque, iure vitae doloremque quidem cumque dignissimos
-      possimus nobis quaerat quos est sint, obcaecati sunt eius ab provident?
-    </p>
+    <p>{{ cardInfo.description }}</p>
   </mat-card-content>
   <hr style="width: 100%; margin: 0;" />
   <mat-card-actions class="actions">
-    <app-rating></app-rating>
+    <app-rating [rating]="cardInfo.stars"></app-rating>
     <div class="options-view">
-      <li><p>1337 Views</p></li>
-      <li><fa-icon [icon]="faHeart"></fa-icon></li>
-      <li><fa-icon [icon]="faEllipsisV"></fa-icon></li>
+      <li>
+        <p>{{ cardInfo.viewCount }} Views</p>
+      </li>
+      <li>
+        <fa-icon [icon]="faHeart"></fa-icon>
+      </li>
+      <li>
+        <fa-icon [icon]="faEllipsisV"></fa-icon>
+      </li>
     </div>
   </mat-card-actions>
 </mat-card>

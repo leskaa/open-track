@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialService } from './../material.service';
+import { TrackService } from './../track.service';
 import { CardInfo } from '../CardInfo';
+import { Track } from '../models/Track';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-discover-page',
@@ -8,11 +10,28 @@ import { CardInfo } from '../CardInfo';
   styleUrls: ['./discover-page.component.css'],
 })
 export class DiscoverPageComponent implements OnInit {
-  constructor(private materialService: MaterialService) {}
+  constructor(private trackService: TrackService,
+    private userService: UserService) {}
 
-  cards: CardInfo[] = [];
+  tracks: CardInfo[] = [];
 
   ngOnInit(): void {
-    this.materialService.getMaterials().subscribe((data) => {});
+    this.trackService.getTracks().subscribe(
+      (response) => {
+        this.tracks = response.map<CardInfo>(track => ({
+          title: track.title,
+          isTrack: true,
+          author: track.author.username,
+          description: track.description,
+          stars: track.rating,
+          viewCount: track.views,
+          favorite: false,
+          link: "tbd",
+        }));
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }
