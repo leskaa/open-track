@@ -1,0 +1,43 @@
+<div class="track-content">
+  <p>{{ track.description }}</p>
+  <div class="actions">
+    <div class="rating">
+      <app-rating [rating]="5"></app-rating>
+    </div>
+    <div class="options-view">
+      <li>
+        <p>{{ track.views }} Views</p>
+      </li>
+      <li>
+        <fa-icon [icon]="faHeart"></fa-icon>
+      </li>
+      <li>
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>flag</mat-icon>
+            <span>Report</span>
+          </button>
+        </mat-menu>
+      </li>
+    </div>
+  </div>
+</div>
+<hr style="position: relative; margin: 20px 0 0 0; width: 120%; left: -40px;" />
+<div class="cardContainer">
+  <div class="cardList">
+    <a
+      *ngFor="let material of materials"
+      [href]="material.link"
+      target="_blank"
+    >
+      <app-card class="card" [cardInfo]="material"></app-card>
+    </a>
+  </div>
+</div>

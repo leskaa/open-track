@@ -11,6 +11,15 @@ import { Profile } from './../../models/Profile';
 import { User } from './../../models/User';
 import { ProfileService } from './../../profile.service';
 import { UserService } from './../../user.service';
+import { TrackService } from '../../track.service';
+import { Track } from 'src/app/models/Track';
+import {
+  Router,
+  Event,
+  NavigationStart,
+  NavigationEnd,
+  NavigationError,
+} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -28,11 +37,14 @@ export class NavbarComponent implements OnInit {
   url: string = '';
   profile: Profile;
   user: User;
+  track: Track;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private profileService: ProfileService,
-    private userService: UserService
+    private userService: UserService,
+    private trackService: TrackService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -73,6 +85,19 @@ export class NavbarComponent implements OnInit {
       this.title = 'Your Favorites';
     } else if (this.url.includes('about')) {
       this.title = 'About OpenTrack';
+    } else if (this.url.includes('track')) {
+      const idInUrl = +this.url.substring(this.url.length - 1, this.url.length);
+      this.getTrack(idInUrl);
+    }
+  }
+
+  async getTrack(id: number): Promise<void> {
+    try {
+      const currTrack = await this.trackService.getTrackById(id).toPromise();
+      this.track = currTrack;
+      this.title = this.track.title;
+    } catch (err) {
+      console.log(err);
     }
   }
 
@@ -84,7 +109,7 @@ export class NavbarComponent implements OnInit {
         .toPromise();
       this.profile = profile;
       this.user = user;
-    } catch(err) {
+    } catch (err) {
       console.log(err);
     }
   }

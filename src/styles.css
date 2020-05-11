@@ -1,12 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
-html,
-body {
-  height: 100%;
+html {
+  width: 100%;
+  overflow-x: hidden;
 }
 body {
   margin: 70px 40px;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #303030;
 }
 app-login-button {
   padding: 20px;
@@ -18,4 +19,27 @@ app-register-button {
 }
 .nav-bar {
   padding: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+hr {
+  color: #505050;
+}
+
+.cardContainer {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.cardList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+
+.card {
+  flex-basis: 20%;
 }

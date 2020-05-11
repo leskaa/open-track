@@ -17,7 +17,7 @@
   margin: 5px 0 5px 0;
 }
 
-.profileHead h3 {
+.profileHead h4 {
   margin: 0 0 3px 0;
   font-size: 18px;
 }
@@ -27,12 +27,11 @@
   margin: 8px 10px 0 0;
 }
 
-.profileContent h3 {
+.profileContent h4 {
   position: relative;
   font-weight: 500;
   margin-bottom: 5px;
   font-size: 18px;
-  color: #303030;
 }
 
 .profileContent p {
@@ -48,7 +47,6 @@
 
 .tracks h2 {
   font-size: 35px;
-  color: #303030;
 }
 
 .editProfile {

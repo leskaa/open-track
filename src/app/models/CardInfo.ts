@@ -1,4 +1,5 @@
 export interface CardInfo {
+  track_id: number;
   title: string;
   isTrack: boolean;
   author: string;

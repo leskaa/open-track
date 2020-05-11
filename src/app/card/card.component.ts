@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { faHeart, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { CardInfo } from './../CardInfo';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { CardInfo } from '../models/CardInfo';
 
 const defaultCardInfo: CardInfo = {
+  track_id: 1,
   title: 'default',
   isTrack: true,
   author: 'unknown',
@@ -10,7 +11,7 @@ const defaultCardInfo: CardInfo = {
   stars: 1,
   viewCount: 0,
   favorite: false,
-  link: 'unknown'
+  link: 'unknown',
 };
 @Component({
   selector: 'app-card',
@@ -19,7 +20,6 @@ const defaultCardInfo: CardInfo = {
 })
 export class CardComponent implements OnInit {
   faHeart = faHeart;
-  faEllipsisV = faEllipsisV;
 
   @Input() cardInfo: CardInfo;
 
