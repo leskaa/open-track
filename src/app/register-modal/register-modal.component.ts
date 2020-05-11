@@ -27,6 +27,7 @@ export class RegisterModalComponent implements OnInit {
   ngOnInit() {
     this.form = this.formBuilder.group({
       username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
     }, {

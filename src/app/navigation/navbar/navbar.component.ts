@@ -5,8 +5,8 @@ import {
   faUser,
   faHeart,
   faEye,
+  faPlusSquare
 } from '@fortawesome/free-solid-svg-icons';
-import { element } from 'protractor';
 import { Profile } from './../../models/Profile';
 import { User } from './../../models/User';
 import { ProfileService } from './../../profile.service';
@@ -31,6 +31,7 @@ export class NavbarComponent implements OnInit {
   faUser = faUser;
   faHeart = faHeart;
   faEye = faEye;
+  faPlusSquare = faPlusSquare;
 
   loggedIn: boolean = false;
   title: string = '';
@@ -65,7 +66,7 @@ export class NavbarComponent implements OnInit {
 
   changeBox(): void {
     this.url = this.document.location.href;
-    const pages: string[] = ['discover', 'profile', 'favorites', 'about'];
+    const pages: string[] = this.loggedIn ? ['discover', 'profile', 'favorites', 'about', 'create'] : ['discover', 'about'];
     pages.forEach((page) => {
       if (this.url.includes(page)) {
         this.document.getElementById(page).setAttribute('class', 'active');
@@ -85,19 +86,8 @@ export class NavbarComponent implements OnInit {
       this.title = 'Your Favorites';
     } else if (this.url.includes('about')) {
       this.title = 'About OpenTrack';
-    } else if (this.url.includes('track')) {
-      const idInUrl = +this.url.substring(this.url.length - 1, this.url.length);
-      this.getTrack(idInUrl);
-    }
-  }
-
-  async getTrack(id: number): Promise<void> {
-    try {
-      const currTrack = await this.trackService.getTrackById(id).toPromise();
-      this.track = currTrack;
-      this.title = this.track.title;
-    } catch (err) {
-      console.log(err);
+    } else if (this.url.includes('create')) {
+      this.title = 'Create Track';
     }
   }
 

@@ -33,6 +33,7 @@ import { NavbarComponent } from './navigation/navbar/navbar.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { TrackPageComponent } from './track-page/track-page.component';
 import { SearchbarComponent } from './navigation/searchbar/searchbar.component';
+import { CreatePageComponent } from './create-page/create-page.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { SearchbarComponent } from './navigation/searchbar/searchbar.component';
     RegisterButtonComponent,
     RegisterModalComponent,
     TrackPageComponent,
+    CreatePageComponent,
   ],
   imports: [
     BrowserModule,

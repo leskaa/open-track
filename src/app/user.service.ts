@@ -17,9 +17,10 @@ export class UserService {
     this.token = this.cookieService.get('csrftoken');
   }
 
-  registerUser(username: string, password: string): Observable<any> {
+  registerUser(username: string, email:string, password: string): Observable<any> {
     return this.http.post(`${environment.apiUrl}/rest-auth/registration/`, {
       username: username,
+      email: email,
       password1: password,
       password2: password,
     });

@@ -39,7 +39,7 @@
 
 .userContainer {
   position: absolute;
-  top: 60px;
+  top: 50px;
   left: 0;
   font-size: 30px;
   text-align: left;
@@ -203,7 +203,7 @@ a:visited {
 
 .button-container {
   position: absolute;
-  top: 20px;
+  top: 12px;
   right: 0;
   z-index: 4;
 }

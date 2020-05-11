@@ -1,9 +1,9 @@
 <div *ngIf="showProfile">
   <div class="profileHead">
     <img [src]="profile.image_relative_path" />
-    <h2>{{ user.first_name }} {{ user.last_name }}</h2>
-    <span style="display: inline-block;"
-      ><fa-icon [icon]="faMapMarkerAlt"></fa-icon>
+    <h2>{{ user.username }}</h2>
+    <span style="display: inline-block;">
+      <fa-icon [icon]="faMapMarkerAlt"></fa-icon>
     </span>
     <h4 style="display: inline-block;">{{ profile.location }}</h4>
     <div style="margin: 0 auto; width: 200px;">
@@ -30,9 +30,13 @@
         Edit Profile
       </button>
     </div>
-    <hr
-      style="position: relative; margin: 20px 0 0 0; width: 120%; left: -40px;"
-    />
+    <hr style="
+        position: relative;
+        margin: 20px 0 0 0;
+        width: 120%;
+        left: -40px;
+        color: #505050;
+      " />
   </div>
   <div class="tracks">
     <h2>User's Tracks</h2>
@@ -44,34 +48,19 @@
     <li>
       <mat-form-field>
         <mat-label for="gravatarLink">Gravatar Link</mat-label>
-        <input
-          matInput
-          formControlName="gravatarLink"
-          id="gravatarLink"
-          [(ngModel)]="gravatarLink"
-        />
+        <input matInput formControlName="gravatarLink" id="gravatarLink" [(ngModel)]="gravatarLink" />
       </mat-form-field>
     </li>
     <li>
       <mat-form-field>
         <mat-label for="website">Website</mat-label>
-        <input
-          matInput
-          formControlName="website"
-          id="website"
-          [(ngModel)]="website"
-        />
+        <input matInput formControlName="website" id="website" [(ngModel)]="website" />
       </mat-form-field>
     </li>
     <li>
       <mat-form-field>
         <mat-label for="location">Location</mat-label>
-        <input
-          matInput
-          formControlName="location"
-          id="location"
-          [(ngModel)]="location"
-        />
+        <input matInput formControlName="location" id="location" [(ngModel)]="location" />
       </mat-form-field>
     </li>
     <li>
@@ -83,31 +72,16 @@
     <li>
       <mat-form-field>
         <mat-label for="education">Education</mat-label>
-        <input
-          matInput
-          formControlName="education"
-          id="education"
-          [(ngModel)]="education"
-        />
+        <input matInput formControlName="education" id="education" [(ngModel)]="education" />
       </mat-form-field>
     </li>
     <li>
       <mat-form-field>
         <mat-label for="skills">Skills</mat-label>
-        <input
-          matInput
-          formControlName="skills"
-          id="skills"
-          [(ngModel)]="skills"
-        />
+        <input matInput formControlName="skills" id="skills" [(ngModel)]="skills" />
       </mat-form-field>
     </li>
-    <button
-      mat-raised-button
-      (click)="toggleView('Profile')"
-      type="button"
-      color="primary"
-    >
+    <button mat-raised-button (click)="toggleView('Profile')" type="button" color="primary">
       Back
     </button>
     <button mat-raised-button type="submit" color="primary">Submit</button>

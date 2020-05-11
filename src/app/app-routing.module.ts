@@ -5,6 +5,7 @@ import { DiscoverPageComponent } from './discover-page/discover-page.component';
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { TrackPageComponent } from './track-page/track-page.component';
+import { CreatePageComponent } from './create-page/create-page.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfilePageComponent,
+  },
+  {
+    path: 'create',
+    component: CreatePageComponent,
   },
   {
     path: 'track/:id',
