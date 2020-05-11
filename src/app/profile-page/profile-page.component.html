@@ -5,22 +5,24 @@
     <span style="display: inline-block;"
       ><fa-icon [icon]="faMapMarkerAlt"></fa-icon>
     </span>
-    <h3 style="display: inline-block;">{{ profile.location }}</h3>
-    <a [href]="profile.website" target="_blank">
-      <h3>{{ profile.website }}</h3>
-    </a>
+    <h4 style="display: inline-block;">{{ profile.location }}</h4>
+    <div style="margin: 0 auto; width: 200px;">
+      <a [href]="profile.website" target="_blank">
+        <h4>{{ profile.website }}</h4>
+      </a>
+    </div>
   </div>
   <div class="profileContent">
     <div>
-      <h3>Work</h3>
+      <h4>Work</h4>
       <p>{{ profile.work }}</p>
     </div>
     <div>
-      <h3>Education</h3>
+      <h4>Education</h4>
       <p>{{ profile.education }}</p>
     </div>
     <div>
-      <h3>Skills</h3>
+      <h4>Skills</h4>
       <p>{{ profile.skills }}</p>
     </div>
     <div class="editButton">
@@ -29,13 +31,7 @@
       </button>
     </div>
     <hr
-      style="
-        position: relative;
-        margin: 20px 0 0 0;
-        width: 120%;
-        left: -40px;
-        color: #505050;
-      "
+      style="position: relative; margin: 20px 0 0 0; width: 120%; left: -40px;"
     />
   </div>
   <div class="tracks">

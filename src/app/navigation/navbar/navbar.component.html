@@ -8,7 +8,7 @@
 <div class="header">
   <div class="menuTitle">
     <div class="hamburger"></div>
-    <H2>{{ title }}</H2>
+    <h2>{{ title }}</h2>
   </div>
   <app-searchbar></app-searchbar>
 </div>
@@ -21,7 +21,7 @@
       </h2>
       <h4 style="color: gray; margin: 5px 0;">{{ user.email }}</h4>
     </div>
-    <hr style="width: 350px; margin-left: -22px; color: gray;" />
+    <hr style="width: 350px; margin-left: -22px;" />
   </div>
   <div *ngIf="!loggedIn" class="userContainer">
     <div style="display: inline-block; vertical-align: middle;">
@@ -29,7 +29,7 @@
         Guest User
       </h2>
     </div>
-    <hr style="width: 350px; margin-left: -22px; color: gray;" />
+    <hr style="width: 350px; margin-left: -22px;" />
   </div>
   <div class="pages">
     <li (click)="changeBox()">

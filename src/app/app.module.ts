@@ -13,8 +13,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginModalComponent } from './login-modal/login-modal.component';
-import { TrackPageComponent } from './track-page/track-page.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { CookieService } from 'ngx-cookie-service';
 
 import { LoginButtonComponent } from './login-button/login-button.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
@@ -28,10 +30,9 @@ import { DiscoverPageComponent } from './discover-page/discover-page.component';
 import { FavoritesPageComponent } from './favorites-page/favorites-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { NavbarComponent } from './navigation/navbar/navbar.component';
+import { LoginModalComponent } from './login-modal/login-modal.component';
+import { TrackPageComponent } from './track-page/track-page.component';
 import { SearchbarComponent } from './navigation/searchbar/searchbar.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { CookieService } from 'ngx-cookie-service';
     MatSnackBarModule,
     FontAwesomeModule,
     MatTooltipModule,
+    MatMenuModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

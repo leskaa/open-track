@@ -14,7 +14,9 @@
   </mat-card-content>
   <hr style="width: 100%; margin: 0;" />
   <mat-card-actions class="actions">
-    <app-rating [rating]="cardInfo.stars"></app-rating>
+    <div class="rating">
+      <app-rating [rating]="cardInfo.stars"></app-rating>
+    </div>
     <div class="options-view">
       <li>
         <p>{{ cardInfo.viewCount }} Views</p>
@@ -23,7 +25,19 @@
         <fa-icon [icon]="faHeart"></fa-icon>
       </li>
       <li>
-        <fa-icon [icon]="faEllipsisV"></fa-icon>
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>flag</mat-icon>
+            <span>Report</span>
+          </button>
+        </mat-menu>
       </li>
     </div>
   </mat-card-actions>

@@ -1,8 +1,11 @@
-<div *ngFor="let track of tracks">
-  <app-card [cardInfo]="track"></app-card>
+<div class="cardContainer">
+  <div class="cardList">
+    <a
+      *ngFor="let track of tracks"
+      routerLink="/track/{{ track.track_id }}"
+      routerLinkActive="active"
+    >
+      <app-card class="card" [cardInfo]="track"></app-card>
+    </a>
+  </div>
 </div>
-
-<br /><br /><br /><br /><br /><br />
-<div></div>
-<app-card></app-card>
-<app-material-list></app-material-list>
