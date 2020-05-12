@@ -17,6 +17,7 @@ import { AppComponent } from './app.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { CookieService } from 'ngx-cookie-service';
 
 import { LoginButtonComponent } from './login-button/login-button.component';
@@ -79,6 +80,7 @@ import { EditMaterialComponent } from './edit-material/edit-material.component';
     MatTooltipModule,
     MatMenuModule,
     MatExpansionModule,
+    MatToolbarModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

@@ -2,7 +2,19 @@
   <div class="container">
     <mat-card-header class="header">
       <mat-card-title style="font-size: 30px; color: white; line-height: 30px;">
-        {{ cardInfo.title }}
+        <div *ngIf="cardInfo.isTrack">
+          <a
+            routerLink="/track/{{ cardInfo.track_id }}"
+            routerLinkActive="active"
+          >
+            {{ cardInfo.title }}
+          </a>
+        </div>
+        <div *ngIf="!cardInfo.isTrack">
+          <a [href]="cardInfo.link" target="_blank">
+            {{ cardInfo.title }}
+          </a>
+        </div>
       </mat-card-title>
       <mat-card-subtitle style="color: white;">
         {{ cardInfo.author }}
@@ -12,17 +24,27 @@
   <mat-card-content class="content">
     <p>{{ cardInfo.description }}</p>
   </mat-card-content>
-  <hr style="width: 100%; margin: 0;" />
-  <mat-card-actions class="actions">
+  <hr *ngIf="cardInfo.isTrack" style="width: 100%; margin: 0;" />
+  <mat-card-actions *ngIf="cardInfo.isTrack" class="actions">
     <div class="rating">
-      <app-rating [rating]="cardInfo.stars"></app-rating>
+      <div *ngIf="cardInfo.isRated">
+        <app-rating style="color: #acb3e1;" [cardInfo]="cardInfo"></app-rating>
+      </div>
+      <div *ngIf="!cardInfo.isRated">
+        <app-rating [cardInfo]="cardInfo"></app-rating>
+      </div>
     </div>
     <div class="options-view">
       <li>
         <p>{{ cardInfo.viewCount }} Views</p>
       </li>
       <li>
-        <fa-icon [icon]="faHeart"></fa-icon>
+        <div class="favorite" *ngIf="cardInfo.favorite">
+          <fa-icon style="color: #ff1d89;" [icon]="faHeart"></fa-icon>
+        </div>
+        <div class="favorite" *ngIf="!cardInfo.favorite">
+          <fa-icon [icon]="faHeart"></fa-icon>
+        </div>
       </li>
       <li>
         <button

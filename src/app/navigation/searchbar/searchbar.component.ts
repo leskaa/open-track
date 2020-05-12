@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { DiscoverService } from 'src/app/discover.service';
 
 @Component({
   selector: 'app-searchbar',
@@ -7,9 +7,19 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./searchbar.component.css'],
 })
 export class SearchbarComponent implements OnInit {
-  faSearch = faSearch;
+  input: string = '';
 
-  constructor() {}
+  constructor(private discoverService: DiscoverService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.discoverService.search.subscribe((result) => (this.input = result));
+  }
+
+  onSearch(): void {
+    this.discoverService.sendSearch(this.input);
+  }
+
+  clear(): void {
+    this.input = '';
+  }
 }

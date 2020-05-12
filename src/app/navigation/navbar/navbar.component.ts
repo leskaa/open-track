@@ -5,7 +5,7 @@ import {
   faUser,
   faHeart,
   faEye,
-  faPlusSquare
+  faPlusSquare,
 } from '@fortawesome/free-solid-svg-icons';
 import { Profile } from './../../models/Profile';
 import { User } from './../../models/User';
@@ -38,14 +38,12 @@ export class NavbarComponent implements OnInit {
   url: string = '';
   profile: Profile;
   user: User;
-  track: Track;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private profileService: ProfileService,
     private userService: UserService,
-    private trackService: TrackService,
-    private router: Router
+    private trackService: TrackService
   ) {}
 
   ngOnInit(): void {
@@ -66,10 +64,12 @@ export class NavbarComponent implements OnInit {
 
   changeBox(): void {
     this.url = this.document.location.href;
-    const pages: string[] = this.loggedIn ? ['discover', 'profile', 'favorites', 'about', 'create'] : ['discover', 'about'];
+    const pages: string[] = this.loggedIn
+      ? ['discover', 'profile', 'favorites', 'about', 'create']
+      : ['discover', 'about'];
     pages.forEach((page) => {
       if (this.url.includes(page)) {
-        this.document.getElementById(page).setAttribute('class', 'active');
+        this.document.getElementById(page).setAttribute('class', 'active box');
       } else {
         this.document.getElementById(page).setAttribute('class', 'box');
       }
@@ -88,6 +88,8 @@ export class NavbarComponent implements OnInit {
       this.title = 'About OpenTrack';
     } else if (this.url.includes('create')) {
       this.title = 'Create Track';
+    } else if (this.url.includes('track')) {
+      this.title = 'Explore Track';
     }
   }
 

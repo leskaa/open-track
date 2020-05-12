@@ -1,9 +1,9 @@
 .card {
-  min-width: 300px;
-  min-height: 200px;
-  max-width: 400px;
-  max-height: 400px;
-  margin: 20px 10px 0 10px;
+  min-width: 350px;
+  min-height: 300px;
+  max-width: 350px;
+  max-height: 300px;
+  margin: 20px 20px 0 0;
   padding: 0 0 5px 0;
   transition: all 0.2s;
 }
@@ -19,7 +19,7 @@
 }
 
 .container {
-  background-image: url("https://i.ibb.co/SQJDrnz/Cat-2.jpg");
+  background-color: #3f51b5;
   background-size: cover;
   position: relative;
   left: 0;
@@ -41,7 +41,13 @@
 }
 
 .content {
-  margin: 10px 10px 5px 10px;
+  margin: 15px 10px 5px 10px;
+  height: 63px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  -webkit-box-orient: vertical;
 }
 
 .actions {
@@ -55,6 +61,7 @@
 .actions button {
   margin: 0 -10px;
   padding: 0;
+  bottom: 2px;
 }
 
 .rating {
@@ -73,4 +80,8 @@
 .options-view > li {
   padding: 0 5px 0 5px;
   display: inline-block;
+}
+
+a {
+  color: white;
 }

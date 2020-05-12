@@ -4,6 +4,7 @@ export interface Material {
   author: string;
   description: string;
   views: number;
+  rating?: number;
   website: string;
   track: number;
   display_order: number;

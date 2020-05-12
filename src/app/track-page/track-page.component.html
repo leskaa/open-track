@@ -1,15 +1,53 @@
-<div class="track-content">
+<div class="trackContent">
+  <h1>{{ track.title }}</h1>
   <p>{{ track.description }}</p>
   <div class="actions">
     <div class="rating">
-      <app-rating [rating]="5"></app-rating>
+      <div class="rate">
+        <input (click)="changeStars(5)" type="radio" id="star5" name="rate" />
+        <label for="star5"><fa-icon [icon]="faStar"></fa-icon></label>
+        <input (click)="changeStars(4)" type="radio" id="star4" name="rate" />
+        <label for="star4"><fa-icon [icon]="faStar"></fa-icon></label>
+        <input (click)="changeStars(3)" type="radio" id="star3" name="rate" />
+        <label for="star3"><fa-icon [icon]="faStar"></fa-icon></label>
+        <input (click)="changeStars(2)" type="radio" id="star2" name="rate" />
+        <label for="star2"><fa-icon [icon]="faStar"></fa-icon></label>
+        <input (click)="changeStars(1)" type="radio" id="star1" name="rate" />
+        <label for="star1"><fa-icon [icon]="faStar"></fa-icon></label>
+      </div>
+      <div *ngIf="track.isRated">
+        <app-rating style="color: #acb3e1;" [cardInfo]="track"></app-rating>
+      </div>
+      <div *ngIf="!track.isRated">
+        <app-rating [cardInfo]="track"></app-rating>
+      </div>
     </div>
     <div class="options-view">
       <li>
-        <p>{{ track.views }} Views</p>
+        <p>{{ track.viewCount }} Views</p>
       </li>
       <li>
-        <fa-icon [icon]="faHeart"></fa-icon>
+        <div class="favorite" *ngIf="track.favorite">
+          <input
+            checked
+            (click)="favoriteButton()"
+            type="checkbox"
+            id="heart"
+            name="heart"
+          />
+          <label style="color: #ff1d89;" for="heart"
+            ><fa-icon [icon]="faHeart"></fa-icon
+          ></label>
+        </div>
+        <div class="favorite" *ngIf="!track.favorite">
+          <input
+            (click)="favoriteButton()"
+            type="checkbox"
+            id="heart"
+            name="heart"
+          />
+          <label for="heart"><fa-icon [icon]="faHeart"></fa-icon></label>
+        </div>
       </li>
       <li>
         <button
@@ -32,12 +70,10 @@
 <hr style="position: relative; margin: 20px 0 0 0; width: 120%; left: -40px;" />
 <div class="cardContainer">
   <div class="cardList">
-    <a
+    <app-card
       *ngFor="let material of materials"
-      [href]="material.link"
-      target="_blank"
-    >
-      <app-card class="card" [cardInfo]="material"></app-card>
-    </a>
+      class="card"
+      [cardInfo]="material"
+    ></app-card>
   </div>
 </div>

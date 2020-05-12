@@ -1,5 +1,7 @@
-<input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" /><label for="openSidebarMenu"
-  class="sidebarIconToggle">
+<input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" /><label
+  for="openSidebarMenu"
+  class="sidebarIconToggle"
+>
   <div class="spinner diagonal part-1"></div>
   <div class="spinner horizontal"></div>
   <div class="spinner diagonal part-2"></div>
@@ -29,7 +31,7 @@
   <div class="pages">
     <li (click)="changeBox()">
       <a routerLink="/discover" routerLinkActive="active">
-        <div class="" id="discover">
+        <div class="box" id="discover">
           <span>
             <fa-icon [icon]="faTh"></fa-icon>
           </span>
@@ -39,7 +41,7 @@
     </li>
     <li *ngIf="loggedIn" (click)="changeBox()">
       <a routerLink="/profile" routerLinkActive="active">
-        <div class="" id="profile">
+        <div class="box" id="profile">
           <span>
             <fa-icon [icon]="faUser"></fa-icon>
           </span>
@@ -49,7 +51,7 @@
     </li>
     <li *ngIf="loggedIn" (click)="changeBox()">
       <a routerLink="/favorites" routerLinkActive="active">
-        <div class="" id="favorites">
+        <div class="box" id="favorites">
           <span>
             <fa-icon [icon]="faHeart"></fa-icon>
           </span>
@@ -59,7 +61,7 @@
     </li>
     <li *ngIf="loggedIn" (click)="changeBox()">
       <a routerLink="/create" routerLinkActive="active">
-        <div class="" id="create">
+        <div class="box" id="create">
           <span>
             <fa-icon [icon]="faPlusSquare"></fa-icon>
           </span>
@@ -69,7 +71,7 @@
     </li>
     <li (click)="changeBox()">
       <a routerLink="/about" routerLinkActive="active">
-        <div class="" id="about">
+        <div class="box" id="about">
           <span>
             <fa-icon [icon]="faEye"></fa-icon>
           </span>

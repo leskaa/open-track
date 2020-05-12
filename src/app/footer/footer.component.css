@@ -1,32 +1,64 @@
-a{
-    border-radius: 4px;
-    color: black;
-    height: 1.6em;
-    margin: .5em;
-    padding: .3em 0;
-}
-
-.contact {
-    display: inline-block; width: 33%;
-    vertical-align: top;
+a {
+  color: white;
+  margin: 0 10px;
 }
 
 .footer {
-    border-bottom: none;
-    border-left: none;
-    border-radius: 5px;
-    border-right: none;
-    border-top: solid;
-    font-size: small;
-    padding-top: 10px;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  border: 0;
+  height: 50px;
+  font-size: 15px;
+  color: white;
+  list-style: none;
 }
 
-.legal {
-    display: inline-block; width: 33%;
-    vertical-align: top;
+.footer h4 {
+  font-size: 15px;
 }
 
-.navigation {
-    display: inline-block; width: 33%;
+.footer ul {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
+.footer li {
+  position: relative;
+  display: inline;
+  width: 33%;
+}
+
+@media only screen and (max-width: 600px) {
+  .footer {
+    height: 120px;
+  }
+  .footer h4 {
+    font-size: 12px;
+    line-height: 12px;
+    margin: -15px 0 0 0;
+  }
+  .footer a {
+    font-size: 12px;
+    line-height: 5px;
+    margin: 0px 0;
+  }
+  .router {
+    margin: -10px 0 0 0;
+  }
+  .router a {
+    margin: 0 5px;
+  }
+  .footer ul {
+    position: relative;
+    display: block;
+    width: 100%;
+    left: -30px;
+  }
+  .footer li {
+    width: 100%;
+  }
+}

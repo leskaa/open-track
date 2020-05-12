@@ -24,12 +24,47 @@ export class TrackService {
     return this.http.put<Track>(this._url + track_id + '/', body);
   }
 
-  createTrack(material: Track): Observable<Track> {
-    const { track_id, ...body } = material;
+  createTrack(track: Track): Observable<Track> {
+    const { track_id, ...body } = track;
     return this.http.post<Track>(this._url, body);
   }
 
   deleteTrack(id: number): Observable<Track> {
     return this.http.delete<Track>(this._url + id + '/');
+  }
+
+  getRatings(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}/track_ratings/`);
+  }
+
+  createRating(
+    stars: number,
+    user_id: number,
+    track_id: number
+  ): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/track_ratings/`, {
+      rating: stars,
+      user_fk: user_id,
+      track_fk: track_id,
+    });
+  }
+
+  deleteRating(id: number): Observable<any> {
+    return this.http.delete(`${environment.apiUrl}/track_ratings/${id}`);
+  }
+
+  getFavorites(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}/track_favorites/`);
+  }
+
+  createFavorite(user_id: number, track_id: number): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/track_favorites/`, {
+      user_fk: user_id,
+      track_fk: track_id,
+    });
+  }
+
+  deleteFavorite(id: number): Observable<any> {
+    return this.http.delete<any>(`${environment.apiUrl}/track_favorites/${id}`);
   }
 }
