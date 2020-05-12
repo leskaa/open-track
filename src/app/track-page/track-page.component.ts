@@ -9,6 +9,7 @@ import { Material } from '../models/Material';
 import { CardInfo } from '../models/CardInfo';
 import { DiscoverService } from '../discover.service';
 import { User } from '../models/User';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-track-page',
@@ -25,11 +26,15 @@ export class TrackPageComponent implements OnInit {
   fullFavorites: any[] = [];
   favorites: number[] = [];
   user: User;
+  editable: boolean = false;
+  editing: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private trackService: TrackService,
-    private discoverService: DiscoverService
+    private discoverService: DiscoverService,
+    private materialService: MaterialService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +54,9 @@ export class TrackPageComponent implements OnInit {
     try {
       const id = +this.route.snapshot.paramMap.get('id');
       const currTrack = await this.trackService.getTrackById(id).toPromise();
+      if (currTrack.author.id === this.userService.user_id) {
+        this.editable = true;
+      }
       this.track = {
         track_id: id,
         title: currTrack.title,

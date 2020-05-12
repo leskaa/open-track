@@ -2,7 +2,7 @@ import { Material } from './Material';
 import { User } from './User';
 
 export interface Track {
-  track_id: number;
+  track_id?: number;
   title: string;
   description: string;
   views: number;

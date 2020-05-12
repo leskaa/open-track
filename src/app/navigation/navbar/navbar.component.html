@@ -14,7 +14,7 @@
   <app-searchbar></app-searchbar>
 </div>
 <div class="sidebar">
-  <div *ngIf="loggedIn" class="userContainer">
+  <div *ngIf="loggedIn && profile?.image_relative_path !== null" class="userContainer">
     <hr style="width: 350px; margin-left: -22px; color: gray;" />
     <img [src]="profile.image_relative_path" alt="Profile" border="0" />
     <div style="display: inline-block; vertical-align: middle;">

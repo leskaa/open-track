@@ -18,6 +18,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDividerModule } from '@angular/material/divider';
 import { CookieService } from 'ngx-cookie-service';
 
 import { LoginButtonComponent } from './login-button/login-button.component';
@@ -38,6 +40,7 @@ import { SearchbarComponent } from './navigation/searchbar/searchbar.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { EditMaterialComponent } from './edit-material/edit-material.component';
+import { EditTrackPageComponent } from './edit-track-page/edit-track-page.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +63,7 @@ import { EditMaterialComponent } from './edit-material/edit-material.component';
     CreatePageComponent,
     FooterComponent,
     EditMaterialComponent,
+    EditTrackPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,6 +85,8 @@ import { EditMaterialComponent } from './edit-material/edit-material.component';
     MatMenuModule,
     MatExpansionModule,
     MatToolbarModule,
+    DragDropModule,
+    MatDividerModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

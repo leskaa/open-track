@@ -1,0 +1,43 @@
+.track-meta-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.remove-material-button {
+  margin-right: 1em;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.content {
+  margin: 1em;
+  margin-left: 2em;
+}
+
+.card {
+  margin: 1em;
+}
+
+mat-list {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.description {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.drag-icon {
+  width: 2em;
+  float: left;
+  padding: 30px 0;
+}

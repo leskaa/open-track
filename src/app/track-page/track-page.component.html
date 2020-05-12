@@ -1,79 +1,82 @@
-<div class="trackContent">
-  <h1>{{ track.title }}</h1>
-  <p>{{ track.description }}</p>
-  <div class="actions">
-    <div class="rating">
-      <div class="rate">
-        <input (click)="changeStars(5)" type="radio" id="star5" name="rate" />
-        <label for="star5"><fa-icon [icon]="faStar"></fa-icon></label>
-        <input (click)="changeStars(4)" type="radio" id="star4" name="rate" />
-        <label for="star4"><fa-icon [icon]="faStar"></fa-icon></label>
-        <input (click)="changeStars(3)" type="radio" id="star3" name="rate" />
-        <label for="star3"><fa-icon [icon]="faStar"></fa-icon></label>
-        <input (click)="changeStars(2)" type="radio" id="star2" name="rate" />
-        <label for="star2"><fa-icon [icon]="faStar"></fa-icon></label>
-        <input (click)="changeStars(1)" type="radio" id="star1" name="rate" />
-        <label for="star1"><fa-icon [icon]="faStar"></fa-icon></label>
+<div *ngIf="!this.editing && this.track !== undefined">
+  <div class="trackContent">
+    <h1>{{ track.title }}</h1>
+    <p>{{ track.description }}</p>
+    <div class="actions">
+      <div class="rating">
+        <div class="rate">
+          <input (click)="changeStars(5)" type="radio" id="star5" name="rate" />
+          <label for="star5">
+            <fa-icon [icon]="faStar"></fa-icon>
+          </label>
+          <input (click)="changeStars(4)" type="radio" id="star4" name="rate" />
+          <label for="star4">
+            <fa-icon [icon]="faStar"></fa-icon>
+          </label>
+          <input (click)="changeStars(3)" type="radio" id="star3" name="rate" />
+          <label for="star3">
+            <fa-icon [icon]="faStar"></fa-icon>
+          </label>
+          <input (click)="changeStars(2)" type="radio" id="star2" name="rate" />
+          <label for="star2">
+            <fa-icon [icon]="faStar"></fa-icon>
+          </label>
+          <input (click)="changeStars(1)" type="radio" id="star1" name="rate" />
+          <label for="star1">
+            <fa-icon [icon]="faStar"></fa-icon>
+          </label>
+        </div>
+        <div *ngIf="track.isRated">
+          <app-rating style="color: #acb3e1;" [cardInfo]="track"></app-rating>
+        </div>
+        <div *ngIf="!track.isRated">
+          <app-rating [cardInfo]="track"></app-rating>
+        </div>
       </div>
-      <div *ngIf="track.isRated">
-        <app-rating style="color: #acb3e1;" [cardInfo]="track"></app-rating>
-      </div>
-      <div *ngIf="!track.isRated">
-        <app-rating [cardInfo]="track"></app-rating>
+      <div class="options-view">
+        <li>
+          <p>{{ track.viewCount }} Views</p>
+        </li>
+        <li>
+          <div class="favorite" *ngIf="track.favorite">
+            <input checked (click)="favoriteButton()" type="checkbox" id="heart" name="heart" />
+            <label style="color: #ff1d89;" for="heart">
+              <fa-icon [icon]="faHeart"></fa-icon>
+            </label>
+          </div>
+          <div class="favorite" *ngIf="!track.favorite">
+            <input (click)="favoriteButton()" type="checkbox" id="heart" name="heart" />
+            <label for="heart">
+              <fa-icon [icon]="faHeart"></fa-icon>
+            </label>
+          </div>
+        </li>
+        <li>
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button *ngIf="this.editable" (click)="this.editing = true" mat-menu-item>
+              <mat-icon>create</mat-icon>
+              <span>Edit</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>flag</mat-icon>
+              <span>Report</span>
+            </button>
+          </mat-menu>
+        </li>
       </div>
     </div>
-    <div class="options-view">
-      <li>
-        <p>{{ track.viewCount }} Views</p>
-      </li>
-      <li>
-        <div class="favorite" *ngIf="track.favorite">
-          <input
-            checked
-            (click)="favoriteButton()"
-            type="checkbox"
-            id="heart"
-            name="heart"
-          />
-          <label style="color: #ff1d89;" for="heart"
-            ><fa-icon [icon]="faHeart"></fa-icon
-          ></label>
-        </div>
-        <div class="favorite" *ngIf="!track.favorite">
-          <input
-            (click)="favoriteButton()"
-            type="checkbox"
-            id="heart"
-            name="heart"
-          />
-          <label for="heart"><fa-icon [icon]="faHeart"></fa-icon></label>
-        </div>
-      </li>
-      <li>
-        <button
-          mat-icon-button
-          [matMenuTriggerFor]="menu"
-          aria-label="Example icon-button with a menu"
-        >
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>
-            <mat-icon>flag</mat-icon>
-            <span>Report</span>
-          </button>
-        </mat-menu>
-      </li>
+  </div>
+  <hr style="position: relative; margin: 20px 0 0 0; width: 120%; left: -40px;" />
+  <div class="cardContainer">
+    <div class="cardList">
+      <app-card *ngFor="let material of materials" class="card" [cardInfo]="material"></app-card>
     </div>
   </div>
 </div>
-<hr style="position: relative; margin: 20px 0 0 0; width: 120%; left: -40px;" />
-<div class="cardContainer">
-  <div class="cardList">
-    <app-card
-      *ngFor="let material of materials"
-      class="card"
-      [cardInfo]="material"
-    ></app-card>
-  </div>
+<div *ngIf="this.editing">
+  <app-edit-track-page [track_id]="track.track_id"></app-edit-track-page>
+  <button mat-raised-button (click)="this.editing = false">Cancel</button>
 </div>

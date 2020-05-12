@@ -20,8 +20,7 @@ export class MaterialService {
   }
 
   updateMaterial(material: Material): Observable<Material> {
-    const { material_id, ...body } = material;
-    return this.http.put<Material>(this._url + material_id + '/', body);
+    return this.http.put<Material>(this._url + material.material_id + '/', material);
   }
 
   createMaterial(material: Material): Observable<Material> {
