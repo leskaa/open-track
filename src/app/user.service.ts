@@ -89,6 +89,7 @@ export class UserService {
     return this.http.get<User>(`${environment.apiUrl}/rest-auth/user/`, {
       headers: new HttpHeaders({
         'X-CSRFToken': this.cookieService.get('csrftoken'),
+        Authorization: `Token ${this.cookieService.get('sessionid')}`,
       }),
       withCredentials: true,
     });
