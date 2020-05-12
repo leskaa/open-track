@@ -1,14 +1,6 @@
 a {
-  border-radius: 4px;
   color: white;
-  height: 1.6em;
-  margin: 0.5em;
-  padding: 0.3em 0;
-}
-
-.contact {
-  position: relative;
-  width: 33%;
+  margin: 0 10px;
 }
 
 .footer {
@@ -18,24 +10,55 @@ a {
   left: 0;
   text-align: center;
   border: 0;
-  height: 30px;
+  height: 50px;
   font-size: 15px;
   color: white;
+  list-style: none;
 }
 
-.legal {
-  position: relative;
-  width: 33%;
+.footer h4 {
+  font-size: 15px;
 }
 
-.navigation {
+.footer ul {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.footer li {
   position: relative;
+  display: inline;
   width: 33%;
 }
 
 @media only screen and (max-width: 600px) {
   .footer {
-    font-size: 10px;
-    word-wrap: normal;
+    height: 120px;
+  }
+  .footer h4 {
+    font-size: 12px;
+    line-height: 12px;
+    margin: -15px 0 0 0;
+  }
+  .footer a {
+    font-size: 12px;
+    line-height: 5px;
+    margin: 0px 0;
+  }
+  .router {
+    margin: -10px 0 0 0;
+  }
+  .router a {
+    margin: 0 5px;
+  }
+  .footer ul {
+    position: relative;
+    display: block;
+    width: 100%;
+    left: -30px;
+  }
+  .footer li {
+    width: 100%;
   }
 }
