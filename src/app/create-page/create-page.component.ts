@@ -7,6 +7,7 @@ import { UserService } from '../user.service';
 import { Track } from '../models/Track';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-page',
@@ -17,6 +18,7 @@ export class CreatePageComponent implements OnInit {
   materials: Material[] = [];
   title: string = '';
   description: string = '';
+  form: FormGroup;
 
   constructor(
     private trackService: TrackService,
@@ -26,7 +28,16 @@ export class CreatePageComponent implements OnInit {
     private router: Router,
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      'title': new FormControl(this.title, [
+        Validators.required,
+      ]),
+      'description': new FormControl(this.description, [
+        Validators.required,
+      ])
+    });
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.materials, event.previousIndex, event.currentIndex);
@@ -58,6 +69,8 @@ export class CreatePageComponent implements OnInit {
   }
 
   createTrack() {
+    this.title = this.form.controls['title'].value;
+    this.description = this.form.controls['description'].value;
     const newTrack: Track = {
       title: this.title,
       description: this.description,

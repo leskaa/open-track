@@ -7,6 +7,7 @@ import { UserService } from '../user.service';
 import { Track } from '../models/Track';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-track-page',
@@ -16,6 +17,7 @@ import { Router } from '@angular/router';
 export class EditTrackPageComponent implements OnInit {
   materials: Material[] = [];
   track: Track;
+  form: FormGroup;
   @Input() track_id;
 
   constructor(
@@ -32,6 +34,14 @@ export class EditTrackPageComponent implements OnInit {
         this.track = response;
         this.track.author = this.track.author.id;
         this.materials = response.materials;
+        this.form = new FormGroup({
+          'title': new FormControl(this.track.title, [
+            Validators.required,
+          ]),
+          'description': new FormControl(this.track.description, [
+            Validators.required,
+          ])
+        });
       },
       (error) => {
         console.log(error);
@@ -69,6 +79,8 @@ export class EditTrackPageComponent implements OnInit {
   }
 
   updateTrack() {
+    this.track.title = this.form.controls['title'].value;
+    this.track.description = this.form.controls['description'].value;
     const { materials, rating, ...updatedTrack } = this.track;
     let successes = 0;
     this.trackService.updateTrack(updatedTrack).subscribe(

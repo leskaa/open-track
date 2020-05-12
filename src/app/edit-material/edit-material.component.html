@@ -2,21 +2,23 @@
   <fa-icon class="drag-icon" [icon]="faArrowsAlt" size="lg"></fa-icon>
   <div class="content">
     <div *ngIf="isEdit">
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Material Title</mat-label>
-        <input [(ngModel)]="material.title" matInput placeholder="Ex. What are css media queries?">
-      </mat-form-field>
+      <form [formGroup]="form">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Material Title</mat-label>
+          <input formControlName="title" matInput placeholder="Ex. What are css media queries?">
+        </mat-form-field>
 
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Web URL</mat-label>
-        <input [(ngModel)]="material.website" matInput placeholder="Ex. https://example.com/">
-      </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Web URL</mat-label>
+          <input formControlName="website" matInput placeholder="Ex. https://example.com/">
+        </mat-form-field>
 
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Author Notes</mat-label>
-        <textarea [(ngModel)]="material.description" matInput
-          placeholder="Ex. Learn what media queries are in the tutorial..."></textarea>
-      </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Author Notes</mat-label>
+          <textarea formControlName="description" matInput
+            placeholder="Ex. Learn what media queries are in the tutorial..."></textarea>
+        </mat-form-field>
+      </form>
     </div>
     <div *ngIf="!isEdit">
       <mat-list>
@@ -29,7 +31,7 @@
     </div>
     <div class="button-container">
       <button class="remove-material-button" mat-button color="warn" (click)="removeMaterial()">Remove</button>
-      <button *ngIf="isEdit" class="save-material-button" mat-stroked-button color="primary"
+      <button *ngIf="isEdit" [disabled]="form.invalid" class="save-material-button" mat-stroked-button color="primary"
         (click)="saveChanges(material)">Save</button>
       <button *ngIf="!isEdit" class="save-material-button" mat-stroked-button color="primary"
         (click)="this.isEdit = true">Edit</button>

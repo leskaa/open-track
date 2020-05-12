@@ -10,17 +10,18 @@
           What is does your track teach?
         </mat-panel-description>
       </mat-expansion-panel-header>
+      <form [formGroup]="form">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Track Title</mat-label>
+          <input formControlName="title" matInput placeholder="Ex. Learn CSS Media Queries" value="" />
+        </mat-form-field>
 
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Track Title</mat-label>
-        <input [(ngModel)]="track.title" matInput placeholder="Ex. Learn CSS Media Queries" value="" />
-      </mat-form-field>
-
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Track Description</mat-label>
-        <textarea [(ngModel)]="track.description" matInput
-          placeholder="Ex. Media queries are a great technique to..."></textarea>
-      </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Track Description</mat-label>
+          <textarea formControlName="description" matInput
+            placeholder="Ex. Media queries are a great technique to..."></textarea>
+        </mat-form-field>
+      </form>
     </mat-expansion-panel>
   </mat-accordion>
   <br />
@@ -35,6 +36,6 @@
     </div>
   </mat-card>
   <br />
-  <button mat-raised-button color="primary" (click)="updateTrack()">Save Changes</button>
+  <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="updateTrack()">Save Changes</button>
   <button class="add-track-button" mat-stroked-button color="primary" (click)="addMaterial()">Add Material</button>
 </div>
