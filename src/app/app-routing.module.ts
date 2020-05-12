@@ -6,6 +6,7 @@ import { FavoritesPageComponent } from './favorites-page/favorites-page.componen
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { TrackPageComponent } from './track-page/track-page.component';
 import { CreatePageComponent } from './create-page/create-page.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -24,14 +25,17 @@ const routes: Routes = [
   {
     path: 'favorites',
     component: FavoritesPageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'profile',
     component: ProfilePageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'create',
     component: CreatePageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'track/:id',
