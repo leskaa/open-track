@@ -34,6 +34,7 @@ import { LoginModalComponent } from './login-modal/login-modal.component';
 import { TrackPageComponent } from './track-page/track-page.component';
 import { SearchbarComponent } from './navigation/searchbar/searchbar.component';
 import { CreatePageComponent } from './create-page/create-page.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { CreatePageComponent } from './create-page/create-page.component';
     RegisterModalComponent,
     TrackPageComponent,
     CreatePageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
