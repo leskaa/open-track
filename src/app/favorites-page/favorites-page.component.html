@@ -1,1 +1,9 @@
-<p>favorites-page works!</p>
+<div class="cardContainer">
+  <div class="cardList">
+    <app-card
+      *ngFor="let track of tracks"
+      class="card"
+      [cardInfo]="track"
+    ></app-card>
+  </div>
+</div>

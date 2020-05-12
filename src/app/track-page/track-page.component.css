@@ -1,27 +1,56 @@
-.actions {
+.trackContent h1 {
+  margin: 80px 0 5px 0;
+}
+
+.rate {
+  position: absolute;
+  bottom: 14px;
+}
+.rate label {
+  margin: 0 5px 0 0;
+  color: transparent;
+}
+.rate:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+}
+.rate:not(:checked) > label {
+  float: right;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.rate > input:checked ~ label {
+  color: #acb3e1;
+}
+
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: #acb3e1;
+}
+
+.favorite label {
   position: relative;
-  margin: 5px 0 0 0;
-  display: flex;
-  justify-content: space-between;
+  margin: 0 0 0 0;
+  bottom: -5px;
 }
 
-.actions button {
-  margin: 0 -10px;
-  padding: 0;
+.favorite:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
 }
 
-.rating {
-  margin-top: 7px;
+.favorite:not(:checked) > label {
+  float: right;
+  overflow: hidden;
+  cursor: pointer;
 }
 
-.options-view {
-  list-style: none;
-  margin: 0;
-  white-space: nowrap;
-  padding: 0;
+.favorite > input:checked ~ label {
+  color: #ff1d89;
 }
 
-.options-view > li {
-  padding: 0 5px 0 5px;
-  display: inline-block;
+.favorite:not(:checked) > label:hover,
+.favorite:not(:checked) > label:hover ~ label {
+  color: #ff1d89;
 }

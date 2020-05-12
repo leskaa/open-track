@@ -1,6 +1,6 @@
 <div class="searchbar">
   <div class="container">
-    <input type="text" placeholder="Search..." />
-    <div class="search"></div>
+    <input (keyup.enter)="onSearch()" type="text" [(ngModel)]="input" />
+    <div (click)="clear()" class="search"></div>
   </div>
 </div>

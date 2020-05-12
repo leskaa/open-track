@@ -5,6 +5,8 @@ import { Profile } from '../models/Profile';
 import { UserService } from '../user.service';
 import { ProfileService } from '../profile.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { CardInfo } from '../models/CardInfo';
+import { DiscoverService } from '../discover.service';
 
 export type Changer = 'Profile' | 'Edit';
 @Component({
@@ -32,6 +34,7 @@ export class ProfilePageComponent implements OnInit {
   work: string;
   education: string;
   skills: string;
+  tracks: CardInfo[] = [];
 
   //variables
   editor: Changer = 'Profile';
@@ -58,21 +61,31 @@ export class ProfilePageComponent implements OnInit {
   constructor(
     private userService: UserService,
     private profileService: ProfileService,
+    private discoverService: DiscoverService,
     private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
+    this.setUpTracks();
+  }
+
+  async setUpTracks(): Promise<void> {
+    const vars = await this.discoverService.createDiscover();
+    this.user = vars[0];
+    vars[3].forEach((track: CardInfo) => {
+      if (track.author === this.user.username) {
+        this.tracks.push(track);
+      }
+    });
     this.getProfile();
   }
 
   async getProfile(): Promise<void> {
     try {
-      const user = await this.userService.getUser().toPromise();
       const profile = await this.profileService
-        .getProfileById(user.pk)
+        .getProfileById(this.user.pk)
         .toPromise();
       this.profile = profile;
-      this.user = user;
     } catch (err) {
       console.log(err);
     }
@@ -88,7 +101,6 @@ export class ProfilePageComponent implements OnInit {
       education: this.education,
       skills: this.skills,
     };
-    console.log(newProfile);
     try {
       const profile = await this.profileService
         .updateProfile(newProfile)

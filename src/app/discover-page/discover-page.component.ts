@@ -3,6 +3,8 @@ import { TrackService } from './../track.service';
 import { CardInfo } from '../models/CardInfo';
 import { Track } from '../models/Track';
 import { UserService } from '../user.service';
+import { User } from '../models/User';
+import { DiscoverService } from '../discover.service';
 
 @Component({
   selector: 'app-discover-page',
@@ -10,31 +12,33 @@ import { UserService } from '../user.service';
   styleUrls: ['./discover-page.component.css'],
 })
 export class DiscoverPageComponent implements OnInit {
-  constructor(
-    private trackService: TrackService,
-    private userService: UserService
-  ) {}
-
+  fullTracks: CardInfo[] = [];
   tracks: CardInfo[] = [];
 
+  constructor(private discoverService: DiscoverService) {}
+
   ngOnInit(): void {
-    this.trackService.getTracks().subscribe(
-      (response) => {
-        this.tracks = response.map<CardInfo>((track) => ({
-          track_id: track.track_id,
-          title: track.title,
-          isTrack: true,
-          author: track.author.username,
-          description: track.description,
-          stars: 5,
-          viewCount: track.views,
-          favorite: false,
-          link: track.materials.length + ' Materials',
-        }));
-      },
-      (error) => {
-        console.log(error);
+    this.setUpTracks();
+    this.discoverService.search.subscribe((result) => this.search(result));
+  }
+
+  async setUpTracks(): Promise<void> {
+    this.tracks = [];
+    const vars = await this.discoverService.createDiscover();
+    vars[3].forEach((track: CardInfo) => {
+      this.fullTracks.push(track);
+      this.tracks.push(track);
+    });
+  }
+
+  search(result: string): void {
+    this.tracks = [];
+    this.fullTracks.forEach((track: CardInfo) => {
+      if (
+        track.title.toLowerCase().trim().includes(result.toLowerCase().trim())
+      ) {
+        this.tracks.push(track);
       }
-    );
+    });
   }
 }

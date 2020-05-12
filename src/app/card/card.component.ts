@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { CardInfo } from '../models/CardInfo';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const defaultCardInfo: CardInfo = {
   track_id: 1,
@@ -9,6 +10,7 @@ const defaultCardInfo: CardInfo = {
   author: 'unknown',
   description: 'lorem impsum',
   stars: 1,
+  isRated: false,
   viewCount: 0,
   favorite: false,
   link: 'unknown',
@@ -19,10 +21,10 @@ const defaultCardInfo: CardInfo = {
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent implements OnInit {
+  faStar = faStar;
   faHeart = faHeart;
 
   @Input() cardInfo: CardInfo;
-
   constructor() {}
 
   ngOnInit(): void {

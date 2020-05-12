@@ -145,7 +145,7 @@ input[type="checkbox"]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 .pages {
   position: absolute;
   margin: 0 0 0 20px;
-  top: 200px;
+  top: 220px;
   list-style: none;
 }
 
@@ -162,6 +162,7 @@ input[type="checkbox"]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 
 .pages li h3 {
   font-size: 30px;
+  line-height: 30px;
   font-weight: 500;
   display: inline-block;
 }
@@ -184,13 +185,10 @@ input[type="checkbox"]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 }
 
 .active span {
-  padding-left: 10px;
-  position: relative;
   line-height: 40px;
 }
 
 .active h3 {
-  position: relative;
   color: #3f51b5;
   line-height: 40px;
 }
@@ -203,7 +201,7 @@ a:visited {
 
 .button-container {
   position: absolute;
-  top: 12px;
+  top: 13px;
   right: 0;
   z-index: 4;
 }

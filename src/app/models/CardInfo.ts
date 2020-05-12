@@ -5,6 +5,7 @@ export interface CardInfo {
   author: string;
   description: string;
   stars: number;
+  isRated: boolean;
   viewCount: number;
   favorite: boolean;
   link: string;
