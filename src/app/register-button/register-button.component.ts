@@ -67,12 +67,13 @@ export class RegisterButtonComponent implements OnInit {
                 (response) => {
                   const profile: Profile = {
                     user_id: response.pk,
-                    image_relative_path: 'null',
-                    website: '',
-                    location: '',
-                    work: '',
-                    education: '',
-                    skills: '',
+                    image_relative_path:
+                      'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y&s=200',
+                    website: 'http://opentrack.tech',
+                    location: 'unknown',
+                    work: 'unknown',
+                    education: 'unknown',
+                    skills: 'unknown',
                   };
                   this.profileService.createProfile(profile).subscribe(
                     (response) => {

@@ -37,8 +37,7 @@ export class ProfileService {
       profile.image_relative_path =
         'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y&s=200';
     }
-    const body = profile;
-    return this.http.put<Profile>(this._url + body.user_id + '/', body, {
+    return this.http.put<Profile>(this._url + profile.user_id + '/', profile, {
       headers: new HttpHeaders({
         'X-CSRFToken': this.cookieService.get('csrftoken'),
       }),
@@ -47,7 +46,6 @@ export class ProfileService {
   }
 
   createProfile(profile: Profile): Observable<Profile> {
-    const { user_id, ...body } = profile;
     if (
       !(
         profile.image_relative_path.includes(
@@ -56,10 +54,10 @@ export class ProfileService {
         profile.image_relative_path.includes('https://s.gravatar.com/avatar/')
       )
     ) {
-      body.image_relative_path =
+      profile.image_relative_path =
         'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y&s=200';
     }
-    return this.http.post<Profile>(this._url, body, {
+    return this.http.post<Profile>(this._url, profile, {
       headers: new HttpHeaders({
         'X-CSRFToken': this.cookieService.get('csrftoken'),
       }),

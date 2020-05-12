@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +36,7 @@ import { TrackPageComponent } from './track-page/track-page.component';
 import { SearchbarComponent } from './navigation/searchbar/searchbar.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { FooterComponent } from './footer/footer.component';
+import { EditMaterialComponent } from './edit-material/edit-material.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import { FooterComponent } from './footer/footer.component';
     RegisterModalComponent,
     TrackPageComponent,
     CreatePageComponent,
-    FooterComponent
+    FooterComponent,
+    EditMaterialComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +78,7 @@ import { FooterComponent } from './footer/footer.component';
     FontAwesomeModule,
     MatTooltipModule,
     MatMenuModule,
+    MatExpansionModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],
