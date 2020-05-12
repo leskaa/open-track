@@ -1,0 +1,32 @@
+a{
+    border-radius: 4px;
+    color: black;
+    height: 1.6em;
+    margin: .5em;
+    padding: .3em 0;
+}
+
+.contact {
+    display: inline-block; width: 33%;
+    vertical-align: top;
+}
+
+.footer {
+    border-bottom: none;
+    border-left: none;
+    border-radius: 5px;
+    border-right: none;
+    border-top: solid;
+    font-size: small;
+    padding-top: 10px;
+}
+
+.legal {
+    display: inline-block; width: 33%;
+    vertical-align: top;
+}
+
+.navigation {
+    display: inline-block; width: 33%;
+}
+

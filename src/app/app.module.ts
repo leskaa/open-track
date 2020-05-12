@@ -35,6 +35,7 @@ import { LoginModalComponent } from './login-modal/login-modal.component';
 import { TrackPageComponent } from './track-page/track-page.component';
 import { SearchbarComponent } from './navigation/searchbar/searchbar.component';
 import { CreatePageComponent } from './create-page/create-page.component';
+import { FooterComponent } from './footer/footer.component';
 import { EditMaterialComponent } from './edit-material/edit-material.component';
 
 @NgModule({
@@ -56,6 +57,7 @@ import { EditMaterialComponent } from './edit-material/edit-material.component';
     RegisterModalComponent,
     TrackPageComponent,
     CreatePageComponent,
+    FooterComponent,
     EditMaterialComponent,
   ],
   imports: [
