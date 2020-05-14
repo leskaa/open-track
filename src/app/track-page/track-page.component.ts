@@ -21,6 +21,7 @@ export class TrackPageComponent implements OnInit {
   faStar = faStar;
 
   track: CardInfo;
+  tracks: Track[];
   materials: CardInfo[] = [];
   ratings: any[] = [];
   fullFavorites: any[] = [];
@@ -47,45 +48,91 @@ export class TrackPageComponent implements OnInit {
     this.favorites = vars[1];
     this.ratings = vars[2];
     this.fullFavorites = vars[4];
+    this.tracks = vars[5];
     this.getMaterials();
   }
 
+  isLoggedIn(): boolean {
+    return this.user !== undefined;
+  }
+
   async getMaterials(): Promise<void> {
-    try {
-      const id = +this.route.snapshot.paramMap.get('id');
-      const currTrack = await this.trackService.getTrackById(id).toPromise();
-      if (currTrack.author.id === this.userService.user_id) {
-        this.editable = true;
-      }
-      this.track = {
-        track_id: id,
-        title: currTrack.title,
-        isTrack: true,
-        author: currTrack.author.username,
-        description: currTrack.description,
-        stars: currTrack.rating,
-        isRated: this.discoverService.isRated(this.ratings, id),
-        viewCount: currTrack.views,
-        favorite: this.discoverService.isFavorite(this.favorites, id),
-        link: currTrack.materials.length + ' Materials',
-      };
-      currTrack.materials.forEach((material) => {
-        const card: CardInfo = {
-          track_id: id,
-          title: material.title,
-          isTrack: false,
-          author: currTrack.author.username,
-          description: material.description,
-          stars: material.rating,
-          isRated: false,
-          viewCount: material.views,
-          favorite: false,
-          link: material.website,
-        };
-        this.materials.push(card);
+    const id = +this.route.snapshot.paramMap.get('id');
+    if (!this.isLoggedIn()) {
+      this.tracks.forEach((element) => {
+        if (element.track_id === id) {
+          const card = {
+            track_id: id,
+            title: element.title,
+            isTrack: true,
+            author: element.author.username,
+            description: element.description,
+            stars: element.rating,
+            isRated: false,
+            viewCount: element.views,
+            favorite: false,
+            link: element.materials.length + ' Materials',
+          };
+          this.track = card;
+          element.materials.forEach((material) => {
+            const card: CardInfo = {
+              track_id: id,
+              title: material.title,
+              isTrack: false,
+              author: element.author.username,
+              description: material.description,
+              stars: material.rating,
+              isRated: false,
+              viewCount: material.views,
+              favorite: false,
+              link: material.website,
+            };
+            this.materials.push(card);
+          });
+        }
       });
-    } catch (err) {
-      console.log(err);
+    } else {
+      try {
+        const currTrack = await this.trackService.getTrackById(id).toPromise();
+        if (currTrack.author.id === this.userService.user_id) {
+          this.editable = true;
+        }
+        let isRated = false;
+        let favorite = false;
+        if (this.user.username !== '') {
+          isRated = this.discoverService.isRated(this.ratings, id);
+          favorite = this.discoverService.isFavorite(this.favorites, id);
+        }
+        this.track = {
+          track_id: id,
+          title: currTrack.title,
+          isTrack: true,
+          author: currTrack.author.username,
+          description: currTrack.description,
+          stars: currTrack.rating,
+          isRated: isRated,
+          viewCount: currTrack.views,
+          favorite: favorite,
+          link: currTrack.materials.length + ' Materials',
+        };
+        currTrack.materials.forEach((material) => {
+          const card: CardInfo = {
+            track_id: id,
+            title: material.title,
+            isTrack: false,
+            author: currTrack.author.username,
+            description: material.description,
+            stars: material.rating,
+            isRated: false,
+            viewCount: material.views,
+            favorite: false,
+            link: material.website,
+          };
+          this.materials.push(card);
+        });
+      } catch (err) {
+        console.log(err);
+      }
     }
   }
 

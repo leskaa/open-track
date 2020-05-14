@@ -97,7 +97,14 @@ export class DiscoverService {
         };
         this.tracks.push(card);
       });
-      return [{}, {}, {}, this.tracks, {}];
+      return [
+        undefined,
+        undefined,
+        undefined,
+        this.tracks,
+        undefined,
+        this.trackArray,
+      ];
     }
     return [
       this.user,
@@ -105,6 +112,7 @@ export class DiscoverService {
       this.ratingsArray,
       this.tracks,
       this.favorites,
+      this.trackArray,
     ];
   }
 
